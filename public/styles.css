@@ -1,0 +1,338 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Luckiest Guy", "Trebuchet MS", sans-serif;
+  background: radial-gradient(circle at 20% 10%, #5cf2ff, #4ea5ff 38%, #7760ff 75%, #482f99);
+  color: #fff9e8;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  gap: 16px;
+}
+
+.topbar {
+  text-align: center;
+  background: transparent;
+  padding: 10px 14px;
+}
+
+.topbar h1 {
+  margin: 0 0 2px;
+  font-size: 4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 3px 0 #3a117e, 0 0 14px rgba(255, 208, 81, 0.55);
+}
+
+.topbar p {
+  margin: 8px 0 0;
+  opacity: 1;
+  color: #fff3c7;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.arena {
+  display: flex;
+  justify-content: center;
+  min-height: 360px;
+}
+
+.players-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 18px;
+  justify-content: center;
+}
+
+.battlefield {
+  position: relative;
+  width: min(1200px, calc(100vw - 40px));
+  height: 430px;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(180deg, #35d6ff 0%, #2a7fff 50%, #5a4ed8 100%);
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.center-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #fff;
+  transform: translateX(-1px);
+  opacity: 0.35;
+}
+
+.team-group {
+  position: absolute;
+  top: 8%;
+  width: 45%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.team-group.left {
+  left: 26%;
+}
+
+.team-group.right {
+  left: 74%;
+}
+
+.team-label {
+  text-align: center;
+  margin: 0 0 40px;
+  opacity: 1;
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 0 rgba(46, 10, 114, 0.7);
+}
+
+.players-row {
+  margin-top: 12px;
+}
+
+.rope {
+  position: absolute;
+  left: 26%;
+  right: 26%;
+  top: calc(50% + 38px);
+  height: 10px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(
+    45deg,
+    #ffc95e 0px,
+    #ffc95e 8px,
+    #ffae49 8px,
+    #ffae49 16px
+  );
+  box-shadow: 0 2px 0 #7f3f0e, 0 0 0 2px rgba(255, 245, 220, 0.45) inset;
+  z-index: 1;
+}
+
+.player-card {
+  width: 110px;
+  height: 120px;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-card.self {
+  filter: drop-shadow(0 0 8px rgba(87, 255, 136, 0.8));
+}
+
+.player-emoji {
+  font-size: 4.32rem;
+  line-height: 1;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.player-tps {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  padding: 0;
+  white-space: nowrap;
+  background: transparent;
+  border: 0;
+  font-weight: 800;
+  z-index: 2;
+}
+
+.player-name {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 8px);
+  background: rgba(30, 6, 84, 0.85);
+  padding: 3px 4px;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hud {
+  text-align: center;
+  background: transparent;
+  padding: 12px;
+}
+
+.instruction {
+  font-size: 2.4rem;
+  margin: 0;
+  font-weight: 900;
+  color: #fff8c8;
+  text-shadow: 0 2px 0 #3f0b85;
+}
+
+.hint {
+  margin: 8px 0;
+  opacity: 1;
+  font-weight: 700;
+  color: #d9f3ff;
+  font-size: 2rem;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 20;
+}
+
+.overlay-card {
+  font-size: 5rem;
+  font-weight: 700;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 12px 30px;
+  color: #fff4bf;
+  text-shadow: 0 3px 0 #3f0d8a;
+}
+
+.hidden {
+  display: none;
+}
+
+.join-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 30;
+}
+
+.join-modal.hidden {
+  display: none;
+}
+
+.join-card {
+  width: 560px;
+  max-width: calc(100vw - 20px);
+  background: linear-gradient(180deg, #1f4cff, #6a3ff6);
+  border: 0;
+  border-radius: 14px;
+  box-shadow: none;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.join-card input,
+.join-card button {
+  padding: 10px;
+  border-radius: 12px;
+  border: 0;
+  font-weight: 800;
+  font-family: inherit;
+  font-size: 2rem;
+}
+
+.join-card button {
+  cursor: pointer;
+  background: linear-gradient(180deg, #ffd860, #ffb22c);
+  color: #451b00;
+  box-shadow: none;
+}
+
+.avatar-picker {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 6px;
+  background: rgba(19, 6, 74, 0.35);
+  border: 0;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.avatar-btn {
+  font-size: 2.6rem;
+  line-height: 1;
+  min-height: 42px;
+  padding: 8px 0;
+  background: linear-gradient(180deg, #ff95d7, #ff59bf);
+  color: #fff;
+  border: 0;
+  box-shadow: none;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+
+.avatar-btn.selected {
+  outline: 3px solid #57ff88;
+  transform: translateY(-1px) scale(1.03);
+}
+
+.small {
+  margin: 0;
+  opacity: 1;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff5ca;
+}
+
+.error {
+  margin: 0;
+  min-height: 1.2rem;
+  color: #ffe3e3;
+  font-weight: 800;
+  text-shadow: 0 2px 0 #891d47;
+  font-size: 1.8rem;
+}
+
+@media (max-width: 920px) {
+  .battlefield {
+    height: 360px;
+  }
+  .team-group {
+    width: 48%;
+  }
+  .team-group.left {
+    left: 28%;
+  }
+  .team-group.right {
+    left: 72%;
+  }
+  .rope {
+    left: 28%;
+    right: 28%;
+  }
+  .player-card {
+    width: 90px;
+    height: 105px;
+  }
+}

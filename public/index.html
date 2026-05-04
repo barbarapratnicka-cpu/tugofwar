@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tug Of War</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1>Tug Of War</h1>
+      <p id="phaseText">Waiting for players...</p>
+    </header>
+
+    <section class="arena">
+      <div class="battlefield">
+        <div class="center-line"></div>
+        <div id="leftTeamGroup" class="team-group left">
+          <p class="team-label">Left Team</p>
+          <div id="leftPlayers" class="players-row"></div>
+        </div>
+        <div id="rope" class="rope"></div>
+        <div id="rightTeamGroup" class="team-group right">
+          <p class="team-label">Right Team</p>
+          <div id="rightPlayers" class="players-row"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hud">
+      <p class="instruction">Hammer the <strong>[SPACEBAR]</strong> to pull!</p>
+      <p class="hint">Press <strong>P</strong> to start the match.</p>
+    </section>
+  </main>
+
+  <div id="overlay" class="overlay hidden">
+    <div class="overlay-card">
+      <p id="overlayText"></p>
+    </div>
+  </div>
+
+  <div id="joinModal" class="join-modal">
+    <form id="joinForm" class="join-card">
+      <h2>Join Game</h2>
+      <label for="nameInput">Name (required)</label>
+      <input id="nameInput" maxlength="24" required autocomplete="off" />
+
+      <p class="small">Choose an avatar emoji</p>
+      <div id="avatarPicker" class="avatar-picker"></div>
+      <button type="submit">Join</button>
+      <p id="joinError" class="error"></p>
+    </form>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/client.js"></script>
+</body>
+</html>
